@@ -12,7 +12,7 @@ print(10*"*"+"guess game!"+10*"*")
 while not win :
     if count >= chance:
         break
-    user_input = int(input(f"[남은기회{chance}]1~{n}사이의 숫자를 입력하세요 : "))
+    user_input = int(input(f"[남은기회{chance - count}]1~{n}사이의 숫자를 입력하세요 : "))
     if user_input == random_number:
         win = True
         print(f"당신이 맞췄습니다. 정답 : {random_number}")
