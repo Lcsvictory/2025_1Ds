@@ -1,18 +1,33 @@
-def searching_duplicate(cities):
-    result = []
-    s = set()
+import random
 
-    for city in cities:
-        l1 = len(s)
-        s.add(city)
-        l2 = len(s)
+this_week_winner = [17,18,23,25,38,39]
 
-        if l1 == l2:
-            result.append(city)
-    result = set(result)
-    return result
+def random_sixnum():
+    result = set()
+    while len(result) != 6:
+        result.add(random.choice(range(1,46)))
+    return list(result)
 
-cities1 = ["Incheon", "Seoul", "Incheon", "Gangwondo", "Incheon", "Gawngju", "Seoul"]
+def iters(l1, l2):
+    l3 = [value for value in l1 if value in l2]
+    return l3
 
-result_d = searching_duplicate(cities1)
-print(result_d)
+def intersect(l1, l2):
+    l1 = set(l1)
+    l2 = set(l2)
+    return list(l1 & l2)
+
+def unio(l1,l2):
+    l1 = set(l1)
+    l2 = set(l2)
+    return list(l1 | l2)
+
+def diff(l1,l2):
+    l1 = set(l1)
+    l2 = set(l2)
+    return list(l1 - l2)
+
+print(intersect(this_week_winner, random_sixnum()))
+print(unio(this_week_winner, random_sixnum()))
+print(diff(this_week_winner, random_sixnum()))
+
