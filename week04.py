@@ -1,6 +1,3 @@
-import random
-
-
 class Node:
     def __init__(self, data, link=None):
         self.data = data
@@ -21,12 +18,26 @@ class LinkedList:
 
     def search(self, target):
         current = self.head
-        while current.link:
+        while current:
             if current.data == target:
                 return f"{target}을(를) 찾았습니다."
             else:
                 current = current.link
         return f"{target}은(는) 리스트 안에 존재하지 않습니다."
+
+
+    def remove(self, target):
+        if self.head.data == target:
+            self.head = self.head.link
+            return
+        current = self.head
+        previous = None
+        while current:
+            if current.data == target: #해당 if문은 첫번째 턴은 반드시 false이다.
+                previous.link = current.link
+            previous = current
+            current = current.link
+
 
     def __str__(self):
         txt = ""
@@ -37,15 +48,11 @@ class LinkedList:
         return txt + "end"
 
 ll = LinkedList()
-for _ in range(20):
-    ll.append(j := random.randint(1, 30))
-    print(j, end=" ")
-print(ll.search(10))
-
-
-# ll.append(8)
-# ll.append(10)
-# ll.append(-9)
-# print(ll)
-# print(ll.search(99))
-# print(ll.search(-9))
+ll.append(8)
+ll.append(10)
+ll.append(-9)
+print(ll)
+print(ll.search(99))
+print(ll.search(-9))
+ll.remove(8)
+print(ll)
