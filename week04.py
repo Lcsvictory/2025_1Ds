@@ -27,14 +27,18 @@ class LinkedList:
 
 
     def remove(self, target):
+        current = self.head
         if self.head.data == target:
             self.head = self.head.link
+            current.link = None
             return
-        current = self.head
+
         previous = None
         while current:
             if current.data == target: #해당 if문은 첫번째 턴은 반드시 false이다.
                 previous.link = current.link
+                current.link = None
+                return
             previous = current
             current = current.link
 

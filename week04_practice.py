@@ -28,6 +28,7 @@ class LinkedList:
         while next_node:
             if next_node.data == target:
                 current.link = next_node.link
+                next_node.link = None
                 return
             current = next_node
             next_node = next_node.link
