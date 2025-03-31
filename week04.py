@@ -16,12 +16,18 @@ class LinkedList:
             current = current.link
         current.link = Node(data)
 
-
+    def __str__(self):
+        txt = ""
+        node = self.head
+        while node:
+            txt += f"{node.data} -> "
+            node = node.link
+        return txt + "end"
 
 ll = LinkedList()
 ll.append(8)
 ll.append(10)
 ll.append(-9)
-
+print(ll)
 # a = Node("d")
 # print(a.data)
