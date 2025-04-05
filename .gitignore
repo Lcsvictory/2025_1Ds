@@ -1,1 +1,9 @@
 .idea
+
+# for visual studio
+.vs
+bin/
+obj/
+*.resx~
+*.tmp
+*.temp
