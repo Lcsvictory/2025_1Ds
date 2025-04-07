@@ -43,18 +43,3 @@ class Stack:
             return True
         return False
 
-s1 = Stack()
-s1.push("data structure")
-s1.peek()
-s1.push("database")
-s1.push("database")
-
-s1.push("database")
-
-s1.push("databaseasdsd")
-print(s1.size())
-s1.peek()
-s1.pop()
-
-s1.pop()
-# s1.pop()
