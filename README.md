@@ -22,3 +22,4 @@ heap memory : 동적변수
 static(data) memory : 전역변수, 스태틱변수
 
 
+
