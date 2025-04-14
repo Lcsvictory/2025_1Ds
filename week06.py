@@ -1,9 +1,12 @@
+from queue import Queue
+
+
 class Node:
     def __init__(self, data, link=None):
         self.data = data
         self.link = link
 
-class Queue:
+class made_Queue:
     def __init__(self):
         self.front = None
         self.rear = None
@@ -32,7 +35,7 @@ class Queue:
             self.rear = None
         return temp.data
 
-q = Queue()
+q = made_Queue()
 q.enqueue("ds")
 q.enqueue("DB")
 # q.enqueue("하이")
@@ -40,4 +43,18 @@ print(q.size, q.front.data, q.rear.data, q.rear.link)
 
 print(q.dequeue())
 print(q.size, q.front.data, q.rear.data, q.rear.link)
+
+print("=======================")
+qq = Queue()
+qq.put("ds")
+qq.put("DB")
+qq.put("hello")
+print(qq.__dir__())
+print(qq.qsize())
+
+print(qq.get())
+print(qq.qsize())
+
+print(qq.get())
+print(qq.qsize())
 
