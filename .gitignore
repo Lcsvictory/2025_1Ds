@@ -1,4 +1,5 @@
 .idea
+*_clone.py
 
 # 빌드 결과물
 *.obj
