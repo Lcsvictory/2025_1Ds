@@ -67,7 +67,12 @@ def delete(node, value):
             return node.left
 
         # 자식 노드가 2개인 경우...
-
+        right_tree_min_node = node.right
+        while right_tree_min_node.left:
+            right_tree_min_node = right_tree_min_node.left
+        node.data = right_tree_min_node.data
+        node.right = delete(node.right, right_tree_min_node.data)
+    return node
 
 if __name__ == "__main__":
     numbers = [10, 15, 8, 3, 9, 14]
