@@ -67,6 +67,36 @@ def insert(root, *, value):
             current = current.right
     return root
 
+def delete(node, value):
+    if node is None:
+        print("노드가 비어있습니다. or 삭제할 값이 없습니다.")
+        return None
+    if value < node.data:
+        node.left = delete(node.left, value)
+    elif value > node.data:
+        node.right = delete(node.right, value)
+    else: #삭제할 값을 가지고 있는 노드를 찾음
+        #leaf노드 이거나 자식이 1개인 경우....
+        if node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+        #자식 노드가 2개인 경우...
+        #right 트리에서 가장 작은 노드를 찾자.
+        #right_tree_min_num = node.right
+        #while right_tree_min_num.left:
+        #    right_tree_min_num = right_tree_min_num.left
+        #node.data = right_tree_min_num.data
+        #node.right = delete(node.right, right_tree_min_num.data)
+
+        #left 트리에서 가장 큰 노드를 찾자.
+        left_tree_max_num = node.left
+        while left_tree_max_num.right:
+            left_tree_max_num = left_tree_max_num.right
+        node.data = left_tree_max_num.data
+        node.left = delete(node.left, left_tree_max_num.data)
+    return node
+
 
 
 
@@ -90,8 +120,24 @@ if __name__ == "__main__":
     #find_number()
     post_order(root)
     print()
-    find_num = int(input("찾을 숫자를 입력 : "))
+    in_order(root)
+    print()
+    pre_order(root)
+    print()
+    #find_num = int(input("찾을 숫자를 입력 : "))
+    find_num = 13
     if search(find_num):
         print(f"{find_num}을(를) 찾았습니다")
     else:
         print(f"{find_num}이(가) 존재하지 않습니다.")
+
+
+    delete_num = int(input("삭제할 숫자를 입력 : "))
+    #delete(root,delete_num)
+    root = delete(root, delete_num)
+    post_order(root)
+    print()
+    in_order(root)
+    print()
+    pre_order(root)
+    print()

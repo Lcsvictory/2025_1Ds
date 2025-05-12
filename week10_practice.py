@@ -47,6 +47,28 @@ def insert(node, value) -> None:
     return
 
 
+def delete(node, value):
+    if node is None:
+        print("노드가 비어있습니다. or 삭제할 값이 없습니다.")
+        return None
+    if value < node.data:
+        node.left = delete(node.left, value)
+    elif value > node.data:
+        node.right = delete(node.right, value)
+    else:  # 삭제할 값을 가지고 있는 노드를 찾음
+        # leaf노드인 경우....
+        if node.left is None and node.right is None:
+            return None
+        # 자식 노드가 1개인 경우
+        # 1줄코드 # return node.right if node.left is None else node.left
+        if node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+
+        # 자식 노드가 2개인 경우...
+
+
 if __name__ == "__main__":
     numbers = [10, 15, 8, 3, 9, 14]
     # numbers = [10, 15, 8, 3, 9, 1, 7, 100]
