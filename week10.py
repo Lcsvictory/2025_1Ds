@@ -30,22 +30,18 @@ def post_order(node):
     print(node.data, end=" -> ")
 
 
-def find_number():
-    find_number = int(input("찾을 숫자를 입력 : "))
+def search(find_number) -> bool:
     current = root
     while True:
         if find_number == current.data:
-            print(f"{find_number}을(를) 찾았습니다")
-            break
+            return True
         elif find_number < current.data:
             if current.left is None:
-                print(f"{find_number}이(가) 존재하지 않습니다")
-                break
+                return False
             current = current.left
         else:
             if current.right is None:
-                print(f"{find_number}이(가) 존재하지 않습니다")
-                break
+                return False
             current = current.right
 
 #함수의 파라미터는 참조하지 않는가?
@@ -71,8 +67,7 @@ def insert(root, *, value):
             current = current.right
     return root
 
-def search():
-    find_number()
+
 
 
 if __name__ == "__main__":
@@ -95,4 +90,8 @@ if __name__ == "__main__":
     #find_number()
     post_order(root)
     print()
-    search()
+    find_num = int(input("찾을 숫자를 입력 : "))
+    if search(find_num):
+        print(f"{find_num}을(를) 찾았습니다")
+    else:
+        print(f"{find_num}이(가) 존재하지 않습니다.")
