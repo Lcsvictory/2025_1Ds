@@ -23,6 +23,17 @@ def post_order(node):
         post_order(node.left)
         post_order(node.right)
         print(node.data, end='->')
+        
+def search(node, value):
+    if node is None:
+        return False
+    current = node
+    if current.data == value:
+        return True
+    elif current.data > value:
+        return search(current.left, value)
+    else:
+        return search(current.right, value)
 
 def insert(node, value) -> None:
     nNode = TreeNode()
@@ -60,12 +71,8 @@ def delete(node, value):
         if node.left is None and node.right is None:
             return None
         # 자식 노드가 1개인 경우
-        # 1줄코드 # return node.right if node.left is None else node.left
-        if node.left is None:
-            return node.right
-        elif node.right is None:
-            return node.left
-
+        elif node.left is None or node.right is None:
+            return node.right if node.left is None else node.left
         # 자식 노드가 2개인 경우...
         right_tree_min_node = node.right
         while right_tree_min_node.left:
@@ -84,4 +91,16 @@ if __name__ == "__main__":
         insert(root, number)
 
     post_order(root)  # 3->9->8->15->10
+    print()
+    if search(root, 7):
+        print("찾았다")
+    else:
+        print("못 찾았다.")
+        
+    root = delete(root, 10)
+    post_order(root)
+    print()
+    in_order(root)
+    print()
+    pre_order(root)
     print()
