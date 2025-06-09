@@ -1,18 +1,18 @@
-import math
+import sys
 
-def is_prime(n):
-    if n <= 1: return False
-    if n == 2: return True
-    if n % 2 == 0 : return False
-    for i in range(3, int(math.sqrt(n))+1, 2):
-        if n % i == 0:
-            return False
-    return True
-
-if __name__ == "__main__":
-    print((3, 2, 2) )
-
-    s, e = map(int, input().split())
-    for i in range(s, e+1):
-        if is_prime(i):
-            print(i)
+stack = list()
+n = int(input())
+for i in range(n):
+    order = sys.stdin.readline().strip()
+    if "push" in order:
+        number = int(order.split()[1])
+        stack.append(number)
+    elif "pop" in order:
+        if len(stack) == 0: print(-1); continue
+        print(stack.pop())
+    elif "size" in order:
+        print(len(stack))
+    elif "empty" in order:
+        print(1) if len(stack) == 0 else print(0)
+    else:
+        print(-1) if len(stack) == 0 else print(stack[-1])
